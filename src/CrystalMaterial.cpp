@@ -132,6 +132,12 @@ G4Material* GetCrystalMaterial(const std::string& Material, const std::string& D
   FAPbI3->AddElement( Pb, 1 );
   FAPbI3->AddElement( I, 3 );
 
+  //Finn: Adding new Detector Material LaBr3
+  G4Element* La  = nistManager->FindOrBuildElement( "La", isotopes );
+  G4Material* LaBr3 = new G4Material( "LaBr3", 5.3*g/cm3, 2 );
+  LaBr3->AddElement( La, 1 );
+  LaBr3->AddElement( Br, 3 );
+
   std::map<std::string, G4Material*> materialMap = {
     {"LSO", LSO},
     {"LYSO", LYSO},
@@ -149,7 +155,8 @@ G4Material* GetCrystalMaterial(const std::string& Material, const std::string& D
     {"MAPbI3", MAPbI3},
     {"CaTiO3", CaTiO3},
     {"CsPbBr3", CsPbBr3},
-    {"FAPbI3", FAPbI3}
+    {"FAPbI3", FAPbI3},
+    {"LaBr3", LaBr3}
   };
 
   if (auto search = materialMap.find(Material); search != materialMap.end())
