@@ -1,4 +1,4 @@
-#GEANT4_myPath=/home/ben/Software/geant/geant4-v11.0.2
-GEANT4_myPath=/home/ben/Software/geant/geant4-v11.3.0
-#source $GEANT4_myPath/share/Geant4-11.0.2/geant4make/geant4make.sh
+GEANT4_myPath=~/geant4
 source $GEANT4_myPath/share/Geant4/geant4make/geant4make.sh
+
+# ./build/SinglePetCrystal --source PhotonAngle${1} --detector Grid -n $2 --detectorMaterial $3 --outputFileName $fullPath --randomSeed $seed

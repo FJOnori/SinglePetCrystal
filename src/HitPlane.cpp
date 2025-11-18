@@ -28,14 +28,16 @@ G4bool HitPlane::ProcessHits( G4Step* step, G4TouchableHistory* history )
   G4Track * track = step->GetTrack();
   std::string particle = track->GetParticleDefinition()->GetParticleName();
 
+  G4int evtNo = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
+
   // Output positions
-  //if ( step->GetPostStepPoint()->GetPosition().getY() == 10.0*mm ) {
+  if ( step->GetPostStepPoint()->GetPosition().getY() == -22.0*mm ) {
     m_outputFile << particle;
-    m_outputFile << " " << step->GetPostStepPoint()->GetPosition().getX();
-    m_outputFile << " " << step->GetPostStepPoint()->GetPosition().getY();
-    m_outputFile << " " << step->GetPostStepPoint()->GetPosition().getZ();
-    m_outputFile << " " << step->GetPostStepPoint()->GetGlobalTime() << std::endl;
-  //}
+    m_outputFile << "," << evtNo;
+    m_outputFile << "," << step->GetPostStepPoint()->GetPosition().getX();
+    m_outputFile << "," << step->GetPostStepPoint()->GetPosition().getZ();
+    m_outputFile << "," << step->GetPostStepPoint()->GetGlobalTime() << std::endl;
+  }
   return true;
 }
 
